@@ -1,0 +1,2 @@
+WORKING = 0
+ON_VACATION = 1

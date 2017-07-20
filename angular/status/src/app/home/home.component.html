@@ -1,0 +1,47 @@
+<h3>Hello {{ username }}, your status is - {{ status }}</h3>
+<br><br>
+<h4>Update my current status:</h4>
+<br>
+
+<div class="dropdown">
+  <button (click)="onDropdownStatus()" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Dropdown
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" [ngStyle]="{'display': (expanded) ? 'block' : 'none'}">
+    <li><a href="#" (click)="setStatus('Working'); false">Working</a></li>
+    <li><a href="#" (click)="setStatus('OnVacation'); false">On Vacation</a></li>
+  </ul>
+</div>
+
+<hr>
+
+<h4>List of employees:</h4>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="search">Search by name:</label>
+            <input type="search" class="form-control" id="search"
+                   [(ngModel)]="usernameFilter"
+                   (ngModelChange)="setFilter()">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="filter-status">Filter by status:</label>
+            <select class="form-control" id="filter-status"
+                    [(ngModel)]="statusFilter"
+                    (change)="setFilter()">
+              <option value="">All</option>
+              <option value="0">Working</option>
+              <option value="1">On Vacation</option>
+            </select>
+        </div>
+    </div>
+</div>
+<br>
+<table class="table table-striped">
+    <tr *ngFor="let user of users">
+        <div [ngClass]="{vacation: user.status === 1}">{{ user.username }} ({{ user.status_display }})</div>
+    </tr>
+</table>

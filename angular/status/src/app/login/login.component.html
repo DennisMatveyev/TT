@@ -1,0 +1,12 @@
+<h2>Welcome to MyWorkStatus!</h2>
+<br>
+<br>
+<div class="col-xs-8">
+    <form (submit)="onLoginSubmit()">
+        <div class="form-group">
+            <label>Username</label>
+            <input class="form-control" name="username" [(ngModel)]="username" />
+        </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+    </form>
+</div>
